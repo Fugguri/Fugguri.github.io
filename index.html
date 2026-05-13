@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Никита Радзюк — AI Engineer</title>
+  <meta name="description" content="AI-инженер, Python + TypeScript. Open-source maintainer (npm, PyPI). MCP, Claude API, продакшн AI-продукты." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-elev: #11121a;
+      --bg-card: #161824;
+      --border: #1f2233;
+      --text: #e6e7ee;
+      --text-dim: #9ea0b3;
+      --text-mute: #5a5d76;
+      --accent: #d97757;
+      --accent-2: #7c5cff;
+      --accent-glow: rgba(217, 119, 87, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, var(--accent-glow), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* HERO */
+    .hero {
+      margin-bottom: 100px;
+    }
+
+    .greeting {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .role {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 500;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .role .accent {
+      color: var(--accent);
+    }
+
+    .intro {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .intro strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 6px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .project-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .project-name .at {
+      color: var(--accent);
+    }
+
+    .project-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    .project-desc {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-mute);
+    }
+
+    /* STACK */
+    .stack {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      line-height: 2;
+      color: var(--text-dim);
+      overflow-x: auto;
+    }
+
+    .stack .key {
+      color: var(--accent);
+      display: inline-block;
+      min-width: 110px;
+    }
+
+    .stack .val {
+      color: var(--text);
+    }
+
+    /* CONTACT */
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .contact a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .contact .label {
+      color: var(--text-mute);
+      min-width: 80px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-mute);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 60px 20px 80px; }
+      section { margin-bottom: 60px; }
+      .hero { margin-bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <header class="hero">
+      <div class="greeting">$ whoami</div>
+      <h1>Никита Радзюк</h1>
+      <div class="role">AI Engineer · <span class="accent">Python</span> · <span class="accent">TypeScript</span></div>
+      <p class="intro">
+        Строю AI-продукты от архитектуры до продакшна. <strong>Maintainer</strong> публичных пакетов в экосистемах <strong>Anthropic MCP</strong> (npm) и <strong>aiogram</strong> (PyPI). В коммерческой работе — LLM-агенты, видео-маркетинг, бизнес-автоматизация.
+      </p>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">TypeScript</span>
+        <span class="badge">Claude API</span>
+        <span class="badge">MCP</span>
+        <span class="badge">Next.js</span>
+        <span class="badge">Docker</span>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">Публикации</div>
+      <div class="projects">
+
+        <a class="project" href="https://github.com/Fugguri/mcp-remote-ops" target="_blank" rel="noopener">
+          <div class="project-head">
+            <div class="project-name"><span class="at">@</span>fugguri/mcp-remote-ops</div>
+            <div class="project-meta">npm · TypeScript</div>
+          </div>
+          <div class="project-desc">
+            MCP-сервер для Claude Code и OpenCode. SSH-выполнение, Docker-операции, rsync, SQL (PostgreSQL/MySQL/MariaDB/SQLite), confirm-flow для опасных действий, мультисерверная конфигурация.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Model Context Protocol</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Vitest</span>
+          </div>
+        </a>
+
+        <a class="project" href="https://github.com/Fugguri/brief_survey" target="_blank" rel="noopener">
+          <div class="project-head">
+            <div class="project-name">brief-survey</div>
+            <div class="project-meta">PyPI · Python</div>
+          </div>
+          <div class="project-desc">
+            Python-библиотека для динамических опросов в Telegram-ботах. Pydantic-валидация, условные ветвления, валидаторы (email, phone, age), медиа-вопросы. Документация RU/EN.
+          </div>
+          <div class="project-tags">
+            <span class="tag">aiogram 3</span>
+            <span class="tag">aiogram_dialog</span>
+            <span class="tag">Pydantic</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Стек</div>
+      <div class="stack">
+        <div><span class="key">backend:</span> <span class="val">Python (FastAPI, aiogram 3, asyncio), Node.js, TypeScript</span></div>
+        <div><span class="key">frontend:</span> <span class="val">Next.js, React, TypeScript, TailwindCSS</span></div>
+        <div><span class="key">ai / llm:</span> <span class="val">Claude (Sonnet, Opus), OpenAI, MCP, RAG, agents</span></div>
+        <div><span class="key">контент:</span> <span class="val">FFmpeg, MoviePy — динамический видеорендеринг</span></div>
+        <div><span class="key">интеграции:</span> <span class="val">Telegram, WhatsApp, TikTok, Instagram, Google Sheets</span></div>
+        <div><span class="key">базы:</span> <span class="val">PostgreSQL, Redis, SQLite, Alembic</span></div>
+        <div><span class="key">инфра:</span> <span class="val">Docker, Linux, nginx, GitHub Actions</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Контакты</div>
+      <div class="contact">
+        <a href="https://github.com/Fugguri" target="_blank" rel="noopener">
+          <span class="label">github</span>github.com/Fugguri
+        </a>
+        <a href="mailto:nogurru007@gmail.com">
+          <span class="label">email</span>nogurru007@gmail.com
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>Санкт-Петербург</span>
+      <span>© 2026</span>
+    </footer>
+
+  </main>
+</body>
+</html>
